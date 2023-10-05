@@ -1,12 +1,24 @@
 const mongoose = require("mongoose");
 
 const exerciseSchema = new mongoose.Schema({
-  name: String,
-  duration:Number,
-  exerciseType: Number,
-  caloriesBurnt: Number,
+  name: {
+    type:String,
+    required:true
+  },
+  duration: {
+    type:Number,
+    required:true
+  },
+  exerciseType:  {
+    type:String,
+    required:true
+  },
+  caloriesBurnt:  {
+    type:Number,
+    required:true
+  },
 },{timeStamp:true})
 
 const Exercise = mongoose.model("Exercise",exerciseSchema);
 
-model.exports = Exercise;
+module.exports = Exercise;
