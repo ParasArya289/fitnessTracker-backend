@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
 
 const goalSchema = new mongoose.Schema({
-   goalName: String,
-  goalDescription: String,
-    targetDate:  {
+   goalName: {
+     type:String,
+     required:true
+   },
+  goalDescription: {
+     type:String,
+     required:true
+   },
+  targetDate:  {
     type: String, 
     default: null,
   },
@@ -11,9 +17,12 @@ const goalSchema = new mongoose.Schema({
     type: Number, 
     default: null,
    },
-  status: "In Progress",
+  status:{
+     type:String,
+     required:true
+   }
 },{timeStamp:true})
 
 const Goal = mongoose.model("Goal",goalSchema);
 
-model.exports = Goal;
+module.exports = Goal;
