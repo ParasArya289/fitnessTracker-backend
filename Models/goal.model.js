@@ -21,7 +21,14 @@ const goalSchema = new mongoose.Schema({
      type:String,
      required:true
    }
-},{timeStamp:true})
+},{ timestamps: true })
+
+goalSchema.pre('save', function (next) {
+  if (this.targetDate!== null && this.targetDate.length <= 0) {
+    this.targetDate = null;
+  }
+  next();
+});
 
 const Goal = mongoose.model("Goal",goalSchema);
 

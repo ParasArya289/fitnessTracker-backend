@@ -2,7 +2,7 @@ const Food = require("../Models/food.model.js");
 
 const getAllFoods = async()=>{
   try{
-    const Foods = await Food.find();
+    const Foods = await Food.find().sort({_id: -1});
     return Foods;
   }catch(error){
     throw new Error("Unable to fetch foods")
@@ -13,7 +13,7 @@ const createFood = async(data)=>{
   try{
     const newFood = new Food(data)
     const savedFood = await newFood.save();
-    return savedFood;
+    return await getAllFoods();
   }catch(error){
     throw error
   }
@@ -25,7 +25,7 @@ const deleteFood = async(foodId)=>{
     if(!food){
       throw new Error("Incorrect ID no food found")
     }
-    return food;
+    return await getAllFoods();
   }catch(error){
     throw error
   }

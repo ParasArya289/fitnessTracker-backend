@@ -21,7 +21,7 @@ const foodSchema = new mongoose.Schema({
     type:Number,
     required:true
   },
-},{timeStamp:true})
+},{timestamps:true})
 
 const Food = mongoose.model("Food",foodSchema);
 
